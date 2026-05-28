@@ -54,53 +54,55 @@
 #                                           adjacency list for undirected graph
 
 
-def createGraph(V,edges):
-    adj = [[] for _ in range(V)]
-    for it in edges:
-        u = it[0]
-        v = it[1]
-        adj[u].append(v)
-        adj[v].append(u)
-    return adj
+# def createGraph(V,edges):
+#     adj = [[] for _ in range(V)]
+#     for it in edges:
+#         u = it[0]
+#         v = it[1]
+#         adj[u].append(v)
+#         adj[v].append(u)
+#     return adj
 
 
 
 
-V = 3
-edges = [[0,1],[0,2],[1,2]]
-adj = createGraph(V,edges)
-print("Adjacency list representation")
-for i in range (V):
-    print(f"{i}:",end=" ")
-    for j in adj[i]:
-        print(j,end=" ")
-    print()
+# V = 3
+# edges = [[0,1],[0,2],[1,2]]
+# adj = createGraph(V,edges)
+# print("Adjacency list representation")
+# for i in range (V):
+#     print(f"{i}:",end=" ")
+#     for j in adj[i]:
+#         print(j,end=" ")
+#     print()
 
 
 
 
-#                                           adjacency list for Directed graph
+# #                                           adjacency list for Directed graph
 
 
 
-def createGraph(V,edges):
-    adj = [[] for _ in range(V)]
-    for it in edges:
-        u = it[0]
-        v = it[1]
-        adj[u].append(v)
+# def createGraph(V,edges):
+#     adj = [[] for _ in range(V)]
+#     for it in edges:
+#         u = it[0]
+#         v = it[1]
+#         adj[u].append(v)
         
-    return adj
+#     return adj
 
 
 
 
-V = 3
-edges = [[0,1],[0,2],[1,2]]
-adj = createGraph(V,edges)
-print("Adjacency list representation")
-for i in range (V):
-    print(f"{i}:",end=" ")
-    for j in adj[i]:
-        print(j,end=" ")
-    print()
+# V = 3
+# edges = [[0,1],[0,2],[1,2]]
+# adj = createGraph(V,edges)
+# print("Adjacency list representation")
+# for i in range (V):
+#     print(f"{i}:",end=" ")
+#     for j in adj[i]:
+#         print(j,end=" ")
+#     print()
+
+
