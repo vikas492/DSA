@@ -5,7 +5,7 @@
 #*******************************************************Basics for Array*************************************************************
 
 
-#                                               Alternate elements of an array
+#                                                                              Alternate elements of an array
 
 # arr=[10,20,30,40,50,60,70,80,90,100]
 # result=[]
@@ -13,7 +13,7 @@
 #     result.append(arr[i])
 # print(" ".join(map(str,result)))
 
-#                                               Move all Zeros to End of Array
+#                                                                              Move all Zeros to End of Array
 
 # arr=[10,20,0,40,0,60,0,80,90,10]
 # length = len(arr)
@@ -31,7 +31,7 @@
 
 # print(" ".join(map(str,arr))) # use pointers for this sum
 
-#                                               Move all Zeros to End of Array using pointers
+#                                                                            Move all Zeros to End of Array using pointers
 
 
 # arr=[10,20,0,40,0,60,0,80,90,10]
@@ -44,7 +44,7 @@
 #    print(arr[i],end=" ")
 
 
-#                                                  Another pointer meathod
+#                                                                            Move all Zeros to End of Array using pointers
 
 
 # arr=[10,20,0,40,0,60,0,80,90,10]  
@@ -60,9 +60,9 @@
 #     print(arr[i],end=" ")
 
 
-#                                               Array Reverse
+#                                                                             Array Reverse
 
-#                                               Array reverse using normal meathod
+#                                                                             Array reverse using normal meathod
 
 
 # arr = [10,20,30,40,50,60,70,80,90,100]
@@ -82,7 +82,7 @@
 #    print(arr[i],end=" ")
 
 
-#                                          Array reverse using two pointer
+#                                                                            Array reverse using two pointer
 
 
 # arr = [10,20,30,40,50,60,70,80,90,100]
@@ -95,7 +95,7 @@
 # for i in range (len(arr)):
 #     print(arr[i],end=" ")
 
-#                                         Array reverse using single pointer
+#                                                                           Array reverse using single pointer
 
 
 # arr = [10,20,30,40,50,60,70,80,90,100]
@@ -109,7 +109,7 @@
 
 
  
-#                                            Remove dublicates from an Arrays
+#                                                                           Remove dublicates from an Arrays
 
 
 # arr=[1,2,2,3,3,3,4,4,4]
@@ -123,7 +123,7 @@
 # print(arr[:idx])
 
 
-#                                           Removing dublicate by simple meathod
+#                                                                           Removing dublicate by simple meathod
 
 
 # arr=[1,2,2,3,3,3,4,4,4]
@@ -135,7 +135,7 @@
 
 
 
-#                                                leader in an array
+#                                                                           leader in an array
 
 
 # arr=[10,22,12,3,0,6]
@@ -153,7 +153,7 @@
 # print(leaders)
 
 
-#                                          optimal leader in an array 
+#                                                                          optimal leader in an array 
 
 
 # arr=[10,22,12,3,0,6]
@@ -170,7 +170,7 @@
 # result.reverse()
 # print(result)
 
-#                                            Generating all subarrays
+#                                                                         Generating all subarrays
         
 
 
@@ -184,7 +184,7 @@
 
 
 
-#                                            Generating all subarrays using slicing
+#                                                                         Generating all subarrays using slicing
 
 # arr=[1,2,3,4,5]
 # n=len(arr)
@@ -193,7 +193,7 @@
 #         print(arr[i:j+1])
 
 
-#                                             Array rotation by d (one to one rotation)
+#                                                                         Array rotation by d (one to one rotation)
 
 
 # arr=[1,2,3,4,5]
@@ -207,13 +207,112 @@
 # print(arr)
 
 
-arr=[1,2,3,4,5]
-d=3
-arr.reverse()
-print(arr)
-arr[:d]=reversed(arr[:d])
-print(arr[:d])
-arr[d:]=reversed(arr[d:])
-print(arr[d:])
-for i in range(len(arr)):
-        print(arr[i], end=" ")
+#                                                                        Array rotation using slice
+
+
+# arr=[1,2,3,4,5]
+# d=3
+# arr.reverse()
+# print(arr)
+# arr[:d]=reversed(arr[:d])
+# print(arr[:d])
+# arr[d:]=reversed(arr[d:])
+# print(arr[d:])
+# for i in range(len(arr)):
+#         print(arr[i], end=" ")
+
+
+
+
+
+#************************************Moving deep in arrays by solving sums (Sums will include various techniques and algorithms)*************************
+#******************************************************************Every Thing will be Mensioned**************************************************************
+#****************************************************Solving some sums from the youtube channel Move U forward*****************************************************
+
+# arr=[2,4,6,23,16,80,64,3]
+# n=len(arr)
+# for i in range(n):
+#     swapped=False
+#     j=0
+#     for j in range(0,n-i-1):                                                       ## Largest Element (Brute Force)
+#         if arr[j]>arr[j+1]:
+#            arr[j],arr[j+1]=arr[j+1],arr[j]
+#            swapped = True
+#     if swapped == False:
+#             break
+# print(arr)
+# largest = arr[n-1]
+# print(largest)
+
+
+
+
+
+# arr=[2,4,6,90,16,80,64,3]
+# n=len(arr)
+# Largest = arr[0]
+# for i in range (1,n):                                                              ## Optimal approch for Largest in an array
+#     if arr[i]>Largest:
+#         Largest = arr[i]
+# print(Largest)
+
+
+
+
+
+
+
+# arr=[2,4,6,23,16,80,64,3]
+# n=len(arr)
+# for i in range(n):
+#     swapped=False
+#     j=0
+#     for j in range(0,n-i-1):                                                       ## Second Largest Element (Brute Force)
+#         if arr[j]>arr[j+1]:                                                        ## This will fail if the array becomes [....,80,80]
+#            arr[j],arr[j+1]=arr[j+1],arr[j]
+#            swapped = True
+#     if swapped == False:
+#             break
+# print(arr)
+# largest = arr[n-2]
+# print(largest)
+
+
+
+
+# arr=[2,4,80,23,16,80,64,80]
+# n=len(arr)
+# for i in range(n):
+#     swapped=False
+#     j=0
+#     for j in range(0,n-i-1):                                                       ## Second Largest Element (Brute Force)
+#         if arr[j]>arr[j+1]:                                                        ## This will work
+#            arr[j],arr[j+1]=arr[j+1],arr[j]
+#            swapped = True
+#     if swapped == False:
+#             break
+# print(arr)
+# largest = arr[n-1]
+# print(largest)
+# secondLargest = 0
+# for i in range(n-2,-1,-1):
+#      if arr[i]!=largest:
+#           secondLargest = arr[i]
+#           break
+# print(secondLargest)
+          
+
+
+arr=[2,7,3,9,5,19,14,12]
+n=len(arr)
+Largest = 0
+secondLargest = -1
+for i in range (n):
+    if arr[i]>Largest:
+        secondLargest = Largest
+        Largest = arr[i]
+        
+    elif arr[i]>secondLargest and arr[i]<Largest:
+        secondLargest = arr[i]
+
+print(f"Largest Element is : {Largest} and Second Largest element is : {secondLargest}")
