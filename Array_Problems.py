@@ -303,16 +303,86 @@
           
 
 
-arr=[2,7,3,9,5,19,14,12]
-n=len(arr)
-Largest = 0
-secondLargest = -1
-for i in range (n):
-    if arr[i]>Largest:
-        secondLargest = Largest
-        Largest = arr[i]
+# arr=[2,7,3,9,5,19,14,12]
+# n=len(arr)
+# Largest = 0
+# secondLargest = -1
+# for i in range (n):
+#     if arr[i]>Largest:
+#         secondLargest = Largest
+#         Largest = arr[i]
         
-    elif arr[i]>secondLargest and arr[i]<Largest:
-        secondLargest = arr[i]
+#     elif arr[i]>secondLargest and arr[i]<Largest:
+#         secondLargest = arr[i]
 
-print(f"Largest Element is : {Largest} and Second Largest element is : {secondLargest}")
+# print(f"Largest Element is : {Largest} and Second Largest element is : {secondLargest}")
+
+
+
+# a=[3,2,4,1,5]
+# a=[1,2,3,4,5]
+# a=[22,33,44,56,67,78]
+# n=len(a)
+# sorted=True
+# for i in range (1,n):
+#     if a[i]>a[i-1]:                            #look for the sign < and >
+#         sorted=False
+#         break
+# print(sorted)
+
+
+
+
+# arr=[1,1,2,2,2,3,3,3,3]
+# res=set()
+# for i in range(0,len(arr)):
+#     res.add(arr[i])
+# print(res)
+# print(list(res))
+
+
+
+
+# arr=[1,1,2,2,2,3,3,3,3]
+# def removeDublicate(arr):
+#     i=0
+#     for j in range (len(arr)):
+#         if arr[j] != arr[i]:
+#             arr[i+1]=arr[j]
+#             i+=1
+#     return i+1
+# print(removeDublicate(arr))
+
+
+
+
+
+# arr=[1,2,3,4,5]
+# temp = arr[0]
+# for i in range (1,len(arr)):
+#     arr[i-1] = arr[i]
+    
+# arr[len(arr)-1]=temp
+# print(arr)
+
+
+arr=[1,2,3,4,5,6]
+n=len(arr)
+temp=[]
+d=3
+d=d%n
+for i in range (d):
+    temp.append(arr[i])
+print(temp)
+for i in range (d,len(arr)):
+    arr[i-d]=arr[i]
+print(arr)
+j=0
+for j in range (len(temp)):
+    arr[n-d+j]=temp[j]
+print(arr)
+
+
+
+
+
