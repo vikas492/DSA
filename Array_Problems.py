@@ -308,7 +308,7 @@
 # Largest = 0
 # secondLargest = -1
 # for i in range (n):
-#     if arr[i]>Largest:
+#     if arr[i]>Largest:                                                               #optimal of second Largest Element
 #         secondLargest = Largest
 #         Largest = arr[i]
         
@@ -360,29 +360,191 @@
 # arr=[1,2,3,4,5]
 # temp = arr[0]
 # for i in range (1,len(arr)):
-#     arr[i-1] = arr[i]
+#     arr[i-1] = arr[i]                                                         #shift by one position
     
 # arr[len(arr)-1]=temp
 # print(arr)
 
 
-arr=[1,2,3,4,5,6]
-n=len(arr)
-temp=[]
-d=3
-d=d%n
-for i in range (d):
-    temp.append(arr[i])
-print(temp)
-for i in range (d,len(arr)):
-    arr[i-d]=arr[i]
-print(arr)
-j=0
-for j in range (len(temp)):
-    arr[n-d+j]=temp[j]
-print(arr)
 
 
 
 
 
+# arr=[1,2,3,4,5,6]
+# n=len(arr)
+# temp=[]
+# d=3
+# d=d%n
+# for i in range (d):
+#     temp.append(arr[i])
+# print(temp)
+# for i in range (d,len(arr)):                                                # the space complexity is o(d) to reduce it will do reverse meathod
+##                                                                              # the reverse method is solved above
+#     arr[i-d]=arr[i]
+# print(arr)
+# j=0
+# for j in range (len(temp)):
+#     arr[n-d+j]=temp[j]
+# print(arr)
+
+
+
+# a1=[1,2,2,3,3,4,4,4,4,5]
+# a2=[1,2,3,4,4,5,6,7]
+
+# res=set()
+# for i in range (len(a1)):                                                  # Union brute force
+#     res.add(a1[i])
+# print(res)
+# for i in range (len(a2)):
+#     res.add(a2[i])
+# print(res)
+# union=(list(res))
+# print(union)
+
+
+
+
+# a1=[1,2,2,3,3,4,4,4,4,5]
+# a2=[1,2,3,4,4,5,6,7]
+# union = []
+# i=0
+# j=0
+# while i<len(a1) and j<len(a2):
+#     if a1[i]<=a2[j]:
+#         if len(union)==0 or union[-1]!=a1[i]:
+#             union.append(a1[i])
+#         i+=1
+#     else:
+#         if len(union)==0 or union[-1]!=a2[j]:                                   #optimal solution for union
+#                  union.append(a2[j])
+#         j+=1
+# while i<len(a1):
+#     if union[-1]!=a1[i]:
+#         union.append(a1[i])
+#     i+=1
+# while j<len(a2):
+#     if union[-1]!=a2[j]:
+#         union.append(a2[j])
+#     j+=1
+# print(union)
+
+
+
+
+
+
+# a1=[1,2,2,3,3,4,4,4,4,5]
+# a2=[1,2,3,4,4,5,6,7]
+# intersection = []
+# i=0
+# j=0
+# while i<len(a1) and j<len(a2):
+#     if a1[i]<a2[j]:
+#         i+=1                                                                       # Optimized insertion
+#     elif a2[j]<a1[i]:
+#             j+=1
+#     else:
+#         if len(intersection)==0 or intersection[-1]!=a1[i]:
+#             intersection.append(a1[i])
+#         i+=1
+#         j+=1
+# print(intersection)
+        
+         
+        
+    
+
+# arr=[1,2,3,4,6]
+# n=len(arr)+1
+# for i in range (1,n+1):
+#     flag=0
+#     for j in range (len(arr)):                                                # Brute force for missing one Element
+#         if i == arr[j]:
+#             flag = 1
+#             break
+#     if flag==0:
+#         print(i)
+#         break
+
+
+
+# arr=[1,2,3,4,6]
+# n=len(arr)+1
+# hashArr = [0]*(n+1)
+# for i in range (len(arr)):                                                   # Better approch using hashing
+#     hashArr[arr[i]] = 1
+# for i in range (1,n+1):
+#     if hashArr[i]==0:
+#         print(i)
+#         break
+
+
+
+
+# arr=[1,2,3,4,6]
+# n=len(arr)+1
+# Total=0
+# sum=n*(n+1)/2
+# for i in range (len(arr)):                                                    # Optimum approch one using formula 
+#     Total+=arr[i]
+# missing = sum-Total
+# print(int(missing))
+
+
+
+
+# arr=[1,2,3,4,5,6,8]
+# n=len(arr)+1
+# xor1=0
+# xor2=0
+# for i in range (1,n+1):                                                         # Optimum approch two using XOR O(2N)
+#     xor1^=i                                                                     # it can be solves in one loop look for the more optimum approch
+# for num in arr:
+#     xor2^=num
+# missing=xor1^xor2
+# print(missing)
+
+
+
+
+# arr = [1,2,3,4,6,7,8]
+# n = len(arr)+1
+# xor1 = 0
+# xor2 = 0
+# for i in range(n - 1):
+#     xor2 ^= arr[i]                                                                #Most Optimized solution o(N)
+#     xor1 ^= (i + 1)
+# xor1 ^= n
+# print(xor1 ^ xor2)
+
+
+
+
+
+
+# arr=[1,1,1,1,0,1,1,1,0,1,1,1,0,1,1]
+# maxi=0
+# count=0
+# for i in range (len(arr)):                                                         # Find the maximum consecutive one
+#     if arr[i]==1:
+#         count+=1
+#         maxi=max(maxi,count)
+#     else:
+#         count=0
+# print(maxi)
+
+
+
+
+arr=[1,1,2,3,3,4,4]
+for i in range (len(arr)):
+    count=0
+    num=arr[i]
+    for j in range (len(arr)):
+        if arr[j]==num:
+            count+=1
+    if count == 1:
+        single=num
+print(single)
