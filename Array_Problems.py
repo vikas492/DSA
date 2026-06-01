@@ -610,13 +610,93 @@
 
 
 
-arr=[1,2,3,1,1,1,1,4,2,3]
-d=3
-length=0
-for i in range (0,len(arr)): 
-    sum=0                                                      # Sum of subarray brutte force
-    for j in range (i,len(arr)):
-        sum+=arr[j]
-        if sum == d:
-            length=max(length,j-i+1)
-print(length)
+# arr=[1,2,3,1,1,1,1,4,2,3]
+# d=3
+# length=0
+# for i in range (0,len(arr)): 
+#     sum=0                                                      # Sum of subarray brutte force O(n^2)
+#     for j in range (i,len(arr)):
+#         sum+=arr[j]
+#         if sum == d:
+#             length=max(length,j-i+1)
+# print(length)
+
+
+
+
+# arr = [1,2,3,1,1,1,1,3,3]
+# k = 6
+# i=0
+# length=0
+# sum=0
+# for r in range (len(arr)):                                                      # Optimal approch but only for the positive numbers
+#     sum+=arr[r]
+#     while sum > k:
+#         sum-=arr[i]
+#         i+=1
+#     if sum==k:
+#         length=max(length,r-i+1)
+# print(length)
+
+
+
+
+                                                                     # for negative ,positive and zeros use prefi+hashmap apporch (Remaining to do)
+
+
+
+
+# arr=[2,6,5,8,11]
+# Target=19
+# Found=False
+# for i in range (len(arr)):
+#     for j in range (i+1,len(arr)):                                    # 2 SUM Brute force approch
+#         if arr[i]+arr[j]==Target:
+#             Found=True
+#             break
+# if Found==True:
+#     print("Found")
+# else:
+#     print("Not Found")
+
+
+
+
+
+
+# arr=[2,6,5,8,11]
+# Target=14
+# freq={}
+# for i in range(len(arr)):                                                   # Better approch of 2 SUM (using Hashing)
+#     rem=Target-arr[i]
+#     if rem in freq:
+#         print(freq[rem],i)
+#         break
+#     freq[arr[i]]=i
+# print(freq)
+
+
+
+
+
+
+arr=[2,6,5,8,11]
+Target=14
+left=0
+right=len(arr)-1
+arr.sort()
+while left < right:
+    s=arr[left]+arr[right]                                               # Two pointer approch of 2 SUM but it needs the array to be sorted
+    if s == Target:
+        print("Yes")
+        break
+    elif s < Target:
+        left+=1
+    else:
+        right-=1
+    
+
+
+
+
+
