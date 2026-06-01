@@ -538,13 +538,85 @@
 
 
 
-arr=[1,1,2,3,3,4,4]
-for i in range (len(arr)):
-    count=0
-    num=arr[i]
-    for j in range (len(arr)):
-        if arr[j]==num:
-            count+=1
-    if count == 1:
-        single=num
-print(single)
+# arr=[1,1,2,3,3,4,4]
+# for i in range (len(arr)):
+#     count=0
+#     num=arr[i]
+#     for j in range (len(arr)):
+#         if arr[j]==num:
+#             count+=1
+#     if count == 1:
+#         single=num
+# print(single)
+
+
+
+
+# arr=[1,1,2,3,3,4,4]
+# # print(max(arr))
+# hash=[0]*(max(arr)+1)
+# # print(hash)
+# for i in range (len(arr)):                                                       # better approch but the not suitable for the 10^12 or 10^9 these are very large numbers
+#     hash[arr[i]]+=1
+# print(hash)
+# for i  in range (1,len(hash)):
+#     if hash[arr[i]] == 1:
+#         num=arr[i]
+# print(num)
+
+
+
+
+
+
+
+# arr=[1,1,2,3,3,4,4]
+# freq={}
+# for num in arr:                                                                       # optimal approch
+#     if num in freq:
+#         freq[arr[num]]+=1
+#     else:
+#         freq[arr[num]]=1
+# print(freq)
+# for key in freq:
+#     if freq[key]==1:
+#         print(key)
+#         break
+
+
+
+
+# arr=[1,1,2,3,3,4,4]
+# xor=0
+# for i in range (len(arr)):                                                           # Most optimal approch
+#     xor = xor ^ arr[i]
+# print(xor)
+
+
+
+
+# arr=[1,2,3,1,1,1,1,4,2,3]
+# d=3
+# length=0
+# for i in range (0,len(arr)):                                                       # Sum of subarray brutte force O(n^3)
+#     for j in range (i,len(arr)):
+#         sum=0
+#         for k in range (i,j+1):
+#             sum+=arr[k]
+#         if sum == d:
+#             length=max(length,j-i+1)
+# print(length)
+
+
+
+
+arr=[1,2,3,1,1,1,1,4,2,3]
+d=3
+length=0
+for i in range (0,len(arr)): 
+    sum=0                                                      # Sum of subarray brutte force
+    for j in range (i,len(arr)):
+        sum+=arr[j]
+        if sum == d:
+            length=max(length,j-i+1)
+print(length)
