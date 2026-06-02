@@ -614,7 +614,7 @@
 # d=3
 # length=0
 # for i in range (0,len(arr)): 
-#     sum=0                                                      # Sum of subarray brutte force O(n^2)
+#     sum=0                                                                        # Sum of subarray brutte force O(n^2)
 #     for j in range (i,len(arr)):
 #         sum+=arr[j]
 #         if sum == d:
@@ -641,7 +641,7 @@
 
 
 
-                                                                     # for negative ,positive and zeros use prefi+hashmap apporch (Remaining to do)
+                                                                     # for negative ,positive and zeros use prefix+hashmap apporch (Remaining to do)
 
 
 
@@ -760,7 +760,7 @@
 # arr=[2,2,3,3,1,2,2]
 # Target=len(arr)//2
 # freq={}
-# for i in range (len(arr)):                                               # Better Approch
+# for i in range (len(arr)):                                                        # Better Approch
 #     if arr[i] not in freq:
 #         freq[arr[i]]=1
 #     else:
@@ -791,3 +791,81 @@
 #     print(candidate)
 # else:
 #     print("Candidate not found")
+
+
+
+
+# arr=[-2,-3,4,-1,-2,1,5,-3]
+# maxi=float("-inf")
+# for i in range (len(arr)):
+#     for j in range (i,len(arr)):                                   # Maximum subarray problem brute force
+#         sum=0
+#         for k in range (i,j+1):
+#             sum+=arr[k]
+#             maxi=max(sum,maxi)
+# print(maxi)
+
+
+
+
+
+
+# arr=[-2,-3,4,-1,-2,1,5,-3]
+# maxi=float("-inf")
+# for i in range (len(arr)):
+#     sum=0
+#     for j in range (i,len(arr)):                                   # Maximum subarray problem better force
+#         sum+=arr[j]
+#         maxi=max(sum,maxi)
+# print(maxi)
+
+
+
+
+
+# arr=[-2,-3,4,-1,-2,1,5,-3]
+# sum=0
+# maxi=float("-inf")
+# for i in range (len(arr)):
+#     sum=sum+arr[i]
+#     if sum > maxi:
+#         maxi=sum
+#     if sum < 0:
+#         sum=0
+        
+    
+# print(maxi)
+
+
+
+
+
+arr=[-2,-3,4,-1,-2,1,5,-3]
+sum=0
+start=0
+ansStart=-1
+ansEnd=-1
+maxi=float("-inf")
+for i in range (len(arr)):
+    
+    if sum == 0:
+        start = i
+
+    sum=sum+arr[i]
+    if sum > maxi:
+        maxi=sum
+        ansStart=start
+        ansEnd=i
+    if sum < 0:
+        sum=0
+        
+print("Maximum Sum =", maxi)
+print("Start Index =", ansStart)
+print("End Index =", ansEnd)
+print("Subarray =", arr[ansStart:ansEnd+1])
+
+
+
+
+
+
