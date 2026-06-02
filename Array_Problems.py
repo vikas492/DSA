@@ -325,7 +325,7 @@
 # n=len(a)
 # sorted=True
 # for i in range (1,n):
-#     if a[i]>a[i-1]:                            #look for the sign < and >
+#     if a[i]>a[i-1]:                                                                 #look for the sign < and >
 #         sorted=False
 #         break
 # print(sorted)
@@ -650,7 +650,7 @@
 # Target=19
 # Found=False
 # for i in range (len(arr)):
-#     for j in range (i+1,len(arr)):                                    # 2 SUM Brute force approch
+#     for j in range (i+1,len(arr)):                                                     # 2 SUM Brute force approch
 #         if arr[i]+arr[j]==Target:
 #             Found=True
 #             break
@@ -680,23 +680,114 @@
 
 
 
-arr=[2,6,5,8,11]
-Target=14
-left=0
-right=len(arr)-1
-arr.sort()
-while left < right:
-    s=arr[left]+arr[right]                                               # Two pointer approch of 2 SUM but it needs the array to be sorted
-    if s == Target:
-        print("Yes")
-        break
-    elif s < Target:
-        left+=1
-    else:
-        right-=1
+# arr=[2,6,5,8,11]
+# Target=14
+# left=0
+# right=len(arr)-1
+# arr.sort()
+# while left < right:
+#     s=arr[left]+arr[right]                                               # Two pointer approch of 2 SUM but it needs the array to be sorted
+#     if s == Target:
+#         print("Yes")
+#         break
+#     elif s < Target:
+#         left+=1
+#     else:
+#         right-=1
     
 
 
 
 
 
+# arr=[1,1,2,0,2,0,0,2,1,1,2,0,1,2,0,0,2,2,1,0]
+# count0=0
+# count1=0
+# count2=0
+# for i in range(len(arr)):
+#     if arr[i]==0:count0+=1
+#     elif arr[i]==1:count1+=1
+#     else:count2+=1                                                             # sorting 0,1,2 only better approch brute approch is simply sorting
+# print(count0)
+# print(count1)
+# print(count2)
+# for i in range (0,count0):
+#     arr[i]=0
+# for i in range (count0,count0+count1):
+#     arr[i]=1
+# for i in range (count0+count1,len(arr)):
+#     arr[i]=2
+# print(arr)
+
+
+
+
+
+
+# arr=[1,1,2,0,2,0,0,2,1,1,2,0,1,2,0,0,2,2,1,0]
+# left=0
+# mid=0
+# high=len(arr)-1
+# while mid<=high:
+#     if arr[mid]==0:
+#         arr[left],arr[mid]=arr[mid],arr[left]
+#         left+=1
+#         mid+=1
+#     elif arr[mid]==1:                                                             # Dutch National Flag Algorithm (sorting 0,1,2)
+#         mid+=1
+#     else:
+#         arr[mid],arr[high]=arr[high],arr[mid]
+#         high-=1
+# print(arr)
+
+
+
+
+# arr=[2,2,3,3,1,2,2]
+# for i in range (len(arr)):
+#     count=0
+#     for j in range (i,len(arr)):                                                  # Find Majority element greater then n/2
+#         if arr[j]==arr[i]:  
+#             count+=1
+#         if count>len(arr)//2:
+#             print(arr[i])
+#             break
+        
+
+
+
+
+# arr=[2,2,3,3,1,2,2]
+# Target=len(arr)//2
+# freq={}
+# for i in range (len(arr)):                                               # Better Approch
+#     if arr[i] not in freq:
+#         freq[arr[i]]=1
+#     else:
+#         freq[arr[i]]+=1
+
+# for key,value in freq.items():
+#     if value>Target:
+#         print(key)
+#         break
+
+
+
+
+
+# arr=[2,2,3,3,1,2,2]
+# candidate=None
+# count=0
+# for num in arr:
+#     if count == 0:
+#         candidate = num
+#     if num == candidate:                                  # Morse voting algorithms to find the majority element from the array
+#         count+=1
+#     else:
+#         count-=1
+# # print(candidate)
+# candidateCount=arr.count(candidate)
+# if candidateCount > len(arr)//2:
+#     print(candidate)
+# else:
+#     print("Candidate not found")
