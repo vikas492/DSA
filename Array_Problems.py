@@ -984,7 +984,7 @@
 #     count=1
 #     while True:
 #         found = False
-#         for j in range (len(arr)):
+#         for j in range (len(arr)):                                       # Longest consecutive sequence  brute force
 #             if arr[j]==x+1:
 #                 found=True
 #                 x+=1
@@ -1006,7 +1006,7 @@
 # count=0
 # longest=1
 # for i in range (len(arr)):
-#     if arr[i]-1==previous:
+#     if arr[i]-1==previous:                                                 # Longest consecutive sequence better approch
 #         count+=1
 #         previous=arr[i]
 #     elif arr[i]!=previous:
@@ -1019,16 +1019,16 @@
 
 
 
-arr=[100,4,102,200,1,3,2,5,6,201,202,203,204]
-longest=0
-st=set(arr)
-for num in st:
-    if num-1 not in st:
-        count=1
-        x=num 
-        while x+1 in st:
-            x+=1
-            count+=1
-        longest=max(longest,count)
-print(longest)
+# arr=[100,4,102,200,1,3,2,5,6,201,202,203,204]
+# longest=0
+# st=set(arr)
+# for num in st:
+#     if num-1 not in st:                                      # Longest consecutive sequence optimal approch
+#         count=1
+#         x=num 
+#         while x+1 in st:
+#             x+=1
+#             count+=1
+#         longest=max(longest,count)
+# print(longest)
         
