@@ -814,7 +814,7 @@
 # maxi=float("-inf")
 # for i in range (len(arr)):
 #     sum=0
-#     for j in range (i,len(arr)):                                   # Maximum subarray problem better force
+#     for j in range (i,len(arr)):                                       # Maximum subarray problem better force
 #         sum+=arr[j]
 #         maxi=max(sum,maxi)
 # print(maxi)
@@ -826,7 +826,7 @@
 # arr=[-2,-3,4,-1,-2,1,5,-3]
 # sum=0
 # maxi=float("-inf")
-# for i in range (len(arr)):
+# for i in range (len(arr)):                                              # optimal approch for max subarray
 #     sum=sum+arr[i]
 #     if sum > maxi:
 #         maxi=sum
@@ -840,32 +840,195 @@
 
 
 
-arr=[-2,-3,4,-1,-2,1,5,-3]
-sum=0
-start=0
-ansStart=-1
-ansEnd=-1
-maxi=float("-inf")
-for i in range (len(arr)):
+# arr=[-2,-3,4,-1,-2,1,5,-3]
+# sum=0
+# start=0
+# ansStart=-1
+# ansEnd=-1
+# maxi=float("-inf")
+# for i in range (len(arr)):                                              # optimal approch for max subarray with subarray or positions
     
-    if sum == 0:
-        start = i
+#     if sum == 0:
+#         start = i
 
-    sum=sum+arr[i]
-    if sum > maxi:
-        maxi=sum
-        ansStart=start
-        ansEnd=i
-    if sum < 0:
-        sum=0
+#     sum=sum+arr[i]
+#     if sum > maxi:
+#         maxi=sum
+#         ansStart=start
+#         ansEnd=i
+#     if sum < 0:
+#         sum=0
         
-print("Maximum Sum =", maxi)
-print("Start Index =", ansStart)
-print("End Index =", ansEnd)
-print("Subarray =", arr[ansStart:ansEnd+1])
+# print("Maximum Sum =", maxi)
+# print("Start Index =", ansStart)
+# print("End Index =", ansEnd)
+# print("Subarray =", arr[ansStart:ansEnd+1])
 
 
 
 
 
 
+# arr=[3,1,-2,-5,2,-4]
+# pos=[]
+# neg=[]
+# for i in range (len(arr)):
+#     if arr[i]>0:
+#         pos.append(arr[i])
+#     else:
+#         neg.append(arr[i])                                        # Brute force for Rearrange array elements
+# # print(pos)
+# # print(neg)
+# p=0
+# q=0
+# for j in range(len(arr)):
+#     if j % 2 == 0:
+#         arr[j]=pos[p]
+#         p+=1
+#     else:
+#         arr[j]=neg[q]
+#         q+=1
+# print(arr)
+
+
+
+
+
+# arr=[3,1,-2,-5,2,-4]
+# pos=[]
+# neg=[]
+# for i in range (len(arr)):
+#     if arr[i]>0:
+#         pos.append(arr[i])
+#     else:                                                                 # Better for rearranging array elements
+#         neg.append(arr[i]) 
+# for i in range (0,len(arr)//2):
+#     arr[i*2]=pos[i]
+#     arr[i*2+1]=neg[i]
+# print(arr)
+
+
+
+
+
+# arr=[3,1,-2,-5,2,-4]
+# ans=[0]*len(arr)
+# pos=0 
+# neg=1
+# for i in range (len(arr)):
+#     if arr[i]>0:
+#         ans[pos]=arr[i]
+#         pos+=2
+#     else:                                                               # Optimal for rearranging array elements
+#         ans[neg]=arr[i]
+#         neg+=2
+# print(ans)
+
+
+
+
+
+
+# arr=[-1,2,3,4,-3,1]
+# pos=[]
+# neg=[]
+# for i in range (len(arr)):
+#     if arr[i]>0:
+#         pos.append(arr[i])
+#     else:
+#         neg.append(arr[i])
+# ps=len(pos)
+# ns=len(neg)
+# if ps>ns:
+#     for i in range (ns):                                                   # Optimal for variety 2 of Rearranging array elements
+#         arr[i*2]=pos[i]
+#         arr[i*2+1]=neg[i]
+#     index=ns*2
+#     for i in range(ns,ps):
+#         arr[index]=pos[i]
+#         index+=1
+# else:
+#     for i in range (ps):
+#         arr[i*2]=pos[i]
+#         arr[i*2+1]=neg[i]
+#     index=ps*2
+#     for i in range(ps,ns):
+#         arr[index]=neg[i]
+#         index+=1
+# print(arr)
+
+
+
+
+# arr=[2,1,5,4,3,0,0]
+# index=-1
+# n=len(arr)
+# for i in range (n-2,-1,-1):
+#     if arr[i]<arr[i+1]:
+#         index=i                                                                    # Next permutation optimal meathod
+#         break
+# for i in range (n-1,-1,-1):
+#     if arr[i]>arr[index]:
+#         arr[i],arr[index]=arr[index],arr[i]
+#         break
+# arr[index+1:n] = arr[index+1:n][::-1]
+# print(arr)
+
+
+
+
+# arr=[100,4,102,200,1,3,2]
+# maxi=1
+# for i in range (len(arr)):
+#     x=arr[i]
+#     count=1
+#     while True:
+#         found = False
+#         for j in range (len(arr)):
+#             if arr[j]==x+1:
+#                 found=True
+#                 x+=1
+#                 count+=1
+#                 break
+#         if not found:
+#             break
+            
+#         maxi=max(maxi,count)
+# print(maxi)
+
+
+
+
+# arr=[100,4,102,200,1,3,2,5,6,201,202,203,204]
+# arr.sort()
+# # print(arr)
+# previous=float("inf")
+# count=0
+# longest=1
+# for i in range (len(arr)):
+#     if arr[i]-1==previous:
+#         count+=1
+#         previous=arr[i]
+#     elif arr[i]!=previous:
+#         count=1
+#         previous=arr[i]
+#     longest=max(longest,count)
+# print(longest)
+
+
+
+
+
+arr=[100,4,102,200,1,3,2,5,6,201,202,203,204]
+longest=0
+st=set(arr)
+for num in st:
+    if num-1 not in st:
+        count=1
+        x=num 
+        while x+1 in st:
+            x+=1
+            count+=1
+        longest=max(longest,count)
+print(longest)
+        
