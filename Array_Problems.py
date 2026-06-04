@@ -984,7 +984,7 @@
 #     count=1
 #     while True:
 #         found = False
-#         for j in range (len(arr)):                                       # Longest consecutive sequence  brute force
+#         for j in range (len(arr)):                                                           # Longest consecutive sequence  brute force
 #             if arr[j]==x+1:
 #                 found=True
 #                 x+=1
@@ -1006,7 +1006,7 @@
 # count=0
 # longest=1
 # for i in range (len(arr)):
-#     if arr[i]-1==previous:                                                 # Longest consecutive sequence better approch
+#     if arr[i]-1==previous:                                                              # Longest consecutive sequence better approch
 #         count+=1
 #         previous=arr[i]
 #     elif arr[i]!=previous:
@@ -1023,7 +1023,7 @@
 # longest=0
 # st=set(arr)
 # for num in st:
-#     if num-1 not in st:                                      # Longest consecutive sequence optimal approch
+#     if num-1 not in st:                                                               # Longest consecutive sequence optimal approch
 #         count=1
 #         x=num 
 #         while x+1 in st:
@@ -1032,3 +1032,28 @@
 #         longest=max(longest,count)
 # print(longest)
         
+
+
+
+
+matrix = [
+    [1,1,1],
+    [1,0,1],
+    [1,1,1]
+]
+rows=len(matrix)
+cols=len(matrix[0])
+for i in range (rows):
+    for j in range (cols):
+        if matrix[i][j]==0:
+            for k in range (cols):
+                if matrix[i][k]!=0:
+                    matrix[i][k]=-1
+            for k in range (rows):
+                if matrix[k][j]!=0:
+                    matrix[k][j]=-1
+for i in range (rows):
+    for j in range (cols):
+        if matrix[i][j]==-1:
+            matrix[i][j]=0
+print(matrix)
