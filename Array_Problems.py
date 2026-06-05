@@ -1036,24 +1036,169 @@
 
 
 
+# matrix = [
+#     [1,1,1],
+#     [1,0,1],
+#     [1,1,1]
+# ]
+# rows=len(matrix)
+# cols=len(matrix[0])
+# for i in range (rows):
+#     for j in range (cols):
+#         if matrix[i][j]==0:
+#             for k in range (cols):                                                    # set matrix zeros brute force
+#                 if matrix[i][k]!=0:
+#                     matrix[i][k]=-1
+#             for k in range (rows):
+#                 if matrix[k][j]!=0:
+#                     matrix[k][j]=-1
+# for i in range (rows):
+#     for j in range (cols):
+#         if matrix[i][j]==-1:
+#             matrix[i][j]=0
+# print(matrix)
+
+
+
+
+# matrix = [
+#     [1,1,1],
+#     [1,0,1],
+#     [1,1,1]
+# ]
+# rows=len(matrix)
+# cols=len(matrix[0])
+# col=[0]*cols
+# row=[0]*rows
+# for i in range (rows):                                                                  # Better approch for set matrix zeros
+#     for j in range (cols):
+#         if matrix[i][j]==0:
+#             row[i]=1
+#             col[i]=1
+# for i in range (rows):
+#     for j in range (cols):
+#         if row[i] == 1 or col[j] == 1:
+#             matrix[i][j]=0
+# print(matrix)
+
+
+
+
+
+
+
+# matrix = [
+#     [1,1,1],
+#     [1,0,1],
+#     [1,1,1]
+# ]
+
+# rows = len(matrix)
+# cols = len(matrix[0])
+
+# col0 = 1
+
+# for i in range(rows):
+    
+#     if matrix[i][0] == 0:
+#         col0 = 0
+#                                                               # Optimal approch for set matrix zeros (chat gpt)not understood properly
+#     for j in range(1, cols):
+        
+#         if matrix[i][j] == 0:
+            
+#             matrix[i][0] = 0
+#             matrix[0][j] = 0
+
+# for i in range(1, rows):
+    
+#     for j in range(1, cols):
+        
+#         if matrix[i][0] == 0 or matrix[0][j] == 0:
+#             matrix[i][j] = 0
+
+# if matrix[0][0] == 0:
+    
+#     for j in range(cols):
+#         matrix[0][j] = 0
+
+# if col0 == 0:
+    
+#     for i in range(rows):
+#         matrix[i][0] = 0
+
+# print(matrix)
+
+
+
+
+
+
+
+# matrix = [
+#     [2,1,4],
+#     [5,0,6],
+#     [8,9,3]
+# ]
+# n=len(matrix)
+# ans = [[0] * n for _ in range(n)]                                            # Brute force for rotating the matrix by 90 degree
+# rows=len(matrix)
+# cols=len(matrix[0])
+# for i in range (rows):
+#     for j in range(cols):
+#         ans[j][n-1-i]=matrix[i][j]
+# print(ans)
+
+
+
+
+
+
+# matrix = [
+#     [2,1,4],
+#     [5,0,6],
+#     [8,9,3]
+# ]
+# rows = len(matrix)
+# cols = len(matrix[0])
+# n=len(matrix)                                                                          # Optimal approch for 90 degree rotation of matrix
+# print(n)
+# for i in range (n):
+#     for j in range (i+1,n):
+#             matrix[i][j],matrix[j][i]=matrix[j][i],matrix[i][j]
+# for i in range (n):
+#       matrix[i].reverse()
+# print(matrix)
+
+
+
+
+
 matrix = [
-    [1,1,1],
-    [1,0,1],
-    [1,1,1]
+    [1, 2, 3, 4],
+    [5, 6, 7, 8],
+    [9,10,11,12]
 ]
-rows=len(matrix)
-cols=len(matrix[0])
-for i in range (rows):
-    for j in range (cols):
-        if matrix[i][j]==0:
-            for k in range (cols):
-                if matrix[i][k]!=0:
-                    matrix[i][k]=-1
-            for k in range (rows):
-                if matrix[k][j]!=0:
-                    matrix[k][j]=-1
-for i in range (rows):
-    for j in range (cols):
-        if matrix[i][j]==-1:
-            matrix[i][j]=0
-print(matrix)
+ans=[]
+n=len(matrix)
+top=0
+bottom=n-1
+left=0
+right=len(matrix[0])-1
+while top <= bottom and left <= right:
+    for i in range (left,right+1):
+        ans.append(matrix[top][i])
+    top+=1
+    for i in range (top,bottom+1):
+        ans.append(matrix[i][right])
+    right -= 1
+    if top <= bottom :
+        for i in range (right,left-1,-1):
+            ans.append(matrix[bottom][i])
+        bottom -=1
+    if left <= right:
+        for i in range(bottom, top - 1, -1):
+            ans.append(matrix[i][left])
+        left += 1
+print(ans)
+    
