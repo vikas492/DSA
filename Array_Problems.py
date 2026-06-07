@@ -1209,7 +1209,7 @@
 # k=3
 # count=0
 # for i in range (len(arr)):
-#     for j in range (i,len(arr)):
+#     for j in range (i,len(arr)):                                                       # Count subarray sum brute force
 #         sum=0
 #         for k in range (i,j+1):
 #             sum=sum+arr[k]
@@ -1227,7 +1227,7 @@
 # count=0
 # for i in range (len(arr)):
 #     sum=0
-#     for j in range (i,len(arr)):
+#     for j in range (i,len(arr)):                                                       # Count subarray sum better approch
 #         sum+=arr[j]
 #         if sum==k:
 #            count+=1
@@ -1236,18 +1236,167 @@
 
 
 
-arr=[1,2,3,-3,1,1,1,4,2,-3]
-k=3
-freq = {0: 1} 
-presum=0
-count=0
-for num in arr:
-    presum+=num
-    remove=presum-k
-    if remove in freq:
-        count += freq[remove]
-    freq[presum] = freq.get(presum, 0) + 1
+
+
+# arr=[1,2,3,-3,1,1,1,4,2,-3]
+# k=3
+# freq = {0: 1} 
+# presum=0
+# count=0
+# for num in arr:
+#     presum+=num                                                                # Count subarray sum prefix optimal approch
+#     remove=presum-k
+#     if remove in freq:
+#         count += freq[remove]
+#     freq[presum] = freq.get(presum, 0) + 1
     
+# print(count)
 
 
-print(count)
+
+
+
+
+# n=10
+# r=3
+# res=1
+# for i in range (0,3):                                                   #find element at R and C in a pascal triangle question type 1
+#     res=res*(n-i)
+#     res=res//(i+1)
+# print(res)
+
+
+
+
+# def ncr (n,r):
+#     res=1
+#     for i in range (r):                                                   # Printing entire row of pascal triangle question type 2
+#         res=res*(n-i)
+#         res=res//(i+1)
+#     return res
+# print(ncr(10,3))
+# n=8
+# for i in range (1,n+1):
+#     print(ncr(n-1,i-1),end=" ")
+
+
+
+
+# ans=1
+# n=6
+# print(ans)
+# for i in range (1,n):                                                      # Optimal type 2
+#     ans=ans*(n-i)
+#     ans=ans/i
+#     print(ans)
+
+
+
+
+
+# def ncr (n,r):
+#     res=1
+#     for i in range (r):
+#         res=res*(n-i)
+#         res=res//(i+1)
+#     return res
+# def pascal_triangle(n):
+#     ans = []
+#     for row in range(1, n + 1):                                                   # Printing entire pascal triangle question type 3
+#         temp = []
+#         for col in range(1, row + 1):
+#             temp.append(ncr(row - 1, col - 1))
+#         ans.append(temp)
+#     return ans
+# print(pascal_triangle(5))
+
+
+
+
+
+
+# def generate_row(row):
+#     ans = 1
+#     ans_row = [1]
+#     for col in range(1, row):
+#         ans = ans * (row - col)
+#         ans = ans // col
+#         ans_row.append(ans)
+#     return ans_row                                                            # Printing entire pascal triangle question type 3 (optimal)
+# def pascal_triangle(n):
+#     ans = []
+#     for i in range(1, n + 1):
+#         ans.append(generate_row(i))
+#     return ans
+# print(pascal_triangle(5))
+
+
+
+
+
+# arr=[1,1,1,3,3,2,2,2]
+# res=[]
+# n=len(arr)
+# for i in range (n):
+#     if arr[i] not in res:
+#         count=0
+#         for j in range (n):                                                      # Brute force for Majority element 2
+#             if arr[j]==arr[i]:
+#                 count+=1
+#         if count > n//3:
+#             res.append(arr[i])
+# print(res)
+
+
+
+
+
+# arr=[1,1,1,3,3,2,2,2]
+# ls=[]
+# freq={}
+# n=len(arr)
+# mini=n//3+1
+# for num in arr:                                                                    # Better approch for Majority element 2
+#     freq[num]=freq.get(num,0)+1
+#     if freq[num]==mini:
+#         ls.append(num)
+# print(ls)
+
+
+
+
+
+arr=[1,1,1,2,2,3,3,3]
+count1=0
+count2=0
+ele1=None
+ele2=None
+for num in arr:
+    if count1==0 and num != ele2:
+        ele1=num
+        count1+=1
+    elif count2==0 and num != ele1:
+        ele2=num
+        count2+=1
+    elif num == ele1:
+        count1+=1
+    elif num == ele2:
+        count2+=1
+    else:
+        count1-=1
+        count2-=1
+count1 = count2 = 0
+for num in arr:
+    if num == ele1:
+        count1 += 1
+    elif num == ele2:
+        count2 += 1
+
+ans = []
+mini = len(arr)//3
+if count1 > mini:
+    ans.append(ele1)
+if count2 > mini:
+    ans.append(ele2)
+
+print(ans)
