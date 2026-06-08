@@ -1134,7 +1134,6 @@
 
 
 
-
 # matrix = [
 #     [2,1,4],
 #     [5,0,6],
@@ -1256,7 +1255,6 @@
 
 
 
-
 # n=10
 # r=3
 # res=1
@@ -1366,37 +1364,186 @@
 
 
 
-arr=[1,1,1,2,2,3,3,3]
-count1=0
-count2=0
-ele1=None
-ele2=None
-for num in arr:
-    if count1==0 and num != ele2:
-        ele1=num
-        count1+=1
-    elif count2==0 and num != ele1:
-        ele2=num
-        count2+=1
-    elif num == ele1:
-        count1+=1
-    elif num == ele2:
-        count2+=1
-    else:
-        count1-=1
-        count2-=1
-count1 = count2 = 0
-for num in arr:
-    if num == ele1:
-        count1 += 1
-    elif num == ele2:
-        count2 += 1
+# arr=[1,1,1,2,2,3,3,3]
+# count1=0
+# count2=0
+# ele1=None
+# ele2=None
+# for num in arr:
+#     if count1==0 and num != ele2:
+#         ele1=num
+#         count1+=1
+#     elif count2==0 and num != ele1:                                                # Optimal approch for Majority element 2 using boyes moore's voting algoirthm
+#         ele2=num
+#         count2+=1
+#     elif num == ele1:
+#         count1+=1
+#     elif num == ele2:
+#         count2+=1
+#     else:
+#         count1-=1
+#         count2-=1
+# count1 = count2 = 0
+# for num in arr:
+#     if num == ele1:
+#         count1 += 1
+#     elif num == ele2:
+#         count2 += 1
 
-ans = []
-mini = len(arr)//3
-if count1 > mini:
-    ans.append(ele1)
-if count2 > mini:
-    ans.append(ele2)
+# ans = []
+# mini = len(arr)//3
+# if count1 > mini:
+#     ans.append(ele1)
+# if count2 > mini:
+#     ans.append(ele2)
 
+# print(ans)
+
+
+
+
+
+# arr=[-1,0,1,2,-1,-4]
+# map=set()
+# for i in range (0,len(arr)):
+#     for j in range (i+1,len(arr)):
+#         for k in range (j+1,len(arr)):                              # Brute force for 3Sum
+#             sum=arr[i]+arr[j]+arr[k]
+#             if sum==0:
+#                 temp=[arr[i],arr[j],arr[k]]
+#                 temp.sort()
+#                 map.add(tuple(temp))
+            
+# print(map)
+
+
+
+
+
+# arr=[-1,0,1,2,-1,-4]
+# ans=set()
+# n=len(arr)
+# for i in range (n):
+#     seen=set()
+#     for j in range (i+1,n):
+#         third=-(arr[i]+arr[j])                               # Better approch for the 3Sum
+#         if third in seen:
+#             temp=[arr[i],arr[j],third]
+#             temp.sort()
+#             ans.add(tuple(temp))
+#         seen.add(arr[j])
+# print(ans)
+
+
+
+
+
+
+
+# arr=[-2,-2,-2,-1,-1,-1,0,0,0,2,2,2,2]
+# arr.sort()
+# ans=set()
+# n=len(arr)
+# for i in range (0,n):
+#     if i>0 and arr[i] == arr[i-1]:continue
+#     j=i+1
+#     k=n-1
+#     while j<k:
+#         sum = arr[i]+arr[j]+arr[k]                                         Optimal approch for 3 sum
+#         if sum < 0:
+#             j+=1
+#         elif sum > 0:
+#             k-=1
+#         else:
+#             temp=[arr[i],arr[j],arr[k]]
+#             ans.add(tuple(temp))
+#             j+=1
+#             k-=1
+#             while j<k and arr[j] == arr[j-1] : j+=1 
+#             while j<k and arr[k] == arr[k+1] : k-=1 
+
+
+# print(ans)
+
+
+
+
+
+# arr=[1,0,-1,0,-2,2]
+# n=len(arr)
+# ans=set()
+# Target=0
+# for i in range (0,n):
+#     for j in range (i+1,n):
+#         for k in range (j+1,n):                                                          # Brute force 4 Sum
+#             for l in range (k+1,n):
+#                 sum=arr[i]+arr[j]+arr[k]+arr[l]
+#                 # sum+=arr[k]
+#                 # sum+=arr[l]
+#                 if sum == Target:
+#                     temp=[arr[i],arr[j],arr[k],arr[l]]
+#                     temp.sort()
+#                     ans.add(tuple(temp))
+
+# print(ans)
+
+
+
+
+
+# arr=[1,0,-1,0,-2,2]
+# n=len(arr)
+# ans=set()
+# Target=0
+# for i in range (0,n):
+#     for j in range (i+1,n):
+#         seen=set()
+#         for k in range (j+1,n):                                                   # Better approch for 4 sum
+#             sum=arr[i]+arr[j]+arr[k]
+#             fourth=Target-sum
+#             if fourth in seen :
+#                 temp = [arr[i], arr[j], arr[k], fourth]
+#                 temp.sort()
+#                 ans.add(tuple(temp))
+#             seen.add(arr[k])
+# print(ans)
+
+
+
+
+
+
+
+arr=[1,0,-1,0,-2,2]
+arr.sort()
+n=len(arr)
+Target=0
+ans=[]
+for i in range (n):
+    if i>0 and arr[i]==arr[i-1]: continue
+    for j in range( i+1,n):
+        if j > i+1 and arr[j] == arr[j-1]:
+            continue
+        k=j+1
+        l=n-1
+        while k<l:
+            sum=arr[i]+arr[j]
+            sum+=arr[k]
+            sum+=arr[l]
+            if sum <Target: k+=1
+            elif sum > Target: l-=1
+            else:
+                ans.append([arr[i], arr[j], arr[k], arr[l]])
+                k+=1
+                l-=1
+                while k<l and arr[k] == arr[k-1]:
+                    k+=1
+                while k<l and arr[l]== arr[l+1]:
+                    l-=1
 print(ans)
+
+ 
+
+
+
+
