@@ -1514,36 +1514,110 @@
 
 
 
-arr=[1,0,-1,0,-2,2]
-arr.sort()
-n=len(arr)
-Target=0
-ans=[]
-for i in range (n):
-    if i>0 and arr[i]==arr[i-1]: continue
-    for j in range( i+1,n):
-        if j > i+1 and arr[j] == arr[j-1]:
-            continue
-        k=j+1
-        l=n-1
-        while k<l:
-            sum=arr[i]+arr[j]
-            sum+=arr[k]
-            sum+=arr[l]
-            if sum <Target: k+=1
-            elif sum > Target: l-=1
-            else:
-                ans.append([arr[i], arr[j], arr[k], arr[l]])
-                k+=1
-                l-=1
-                while k<l and arr[k] == arr[k-1]:
-                    k+=1
-                while k<l and arr[l]== arr[l+1]:
-                    l-=1
-print(ans)
+# arr=[1,0,-1,0,-2,2]
+# arr.sort()
+# n=len(arr)
+# Target=0
+# ans=[]
+# for i in range (n):
+#     if i>0 and arr[i]==arr[i-1]: continue
+#     for j in range( i+1,n):
+#         if j > i+1 and arr[j] == arr[j-1]:
+#             continue
+#         k=j+1
+#         l=n-1                                                          # Optimal approch for 4 sum
+#         while k<l:
+#             sum=arr[i]+arr[j]
+#             sum+=arr[k]
+#             sum+=arr[l]
+#             if sum <Target: k+=1
+#             elif sum > Target: l-=1
+#             else:
+#                 ans.append([arr[i], arr[j], arr[k], arr[l]])
+#                 k+=1
+#                 l-=1
+#                 while k<l and arr[k] == arr[k-1]:
+#                     k+=1
+#                 while k<l and arr[l]== arr[l+1]:
+#                     l-=1
+# print(ans)
 
  
 
 
 
 
+# arr=[4,2,2,6,4]
+# n=len(arr)
+# Target=6
+# count=0
+# for i in range (n):
+#     for j in range (i,n):                                                     # Brute force for counting target subarray using XOR
+#         xor=0
+#         for k in range (i,j+1):
+#             xor=xor^arr[k]
+#         if xor == Target:
+#             count+=1
+# print(count)
+
+
+
+
+
+
+# arr=[4,2,2,6,4]
+# n=len(arr)
+# Target=6
+# count=0
+# for i in range (n):
+#     xor=0
+#     for j in range (i,n):                                               # Better approch for counting target subarray using XOR
+#         xor=xor^arr[j]
+#         if xor == Target:
+#             count+=1
+# print(count)
+
+
+
+
+
+
+# arr=[4,2,2,6,4]
+# xr=0
+# freq={0:1}
+# k=6
+# count=0
+# for num in arr :
+#     xr=xr^num                                                    # Optimal approch for counting target subarray using XOR
+#     need=xr^k
+#     if need in freq:
+#         count+=freq[need]
+#     if xr in freq:
+#         freq[xr] += 1
+#     else:
+#         freq[xr] = 1
+
+# print(count)
+
+
+
+
+arr = [
+    [1,3],
+    [2,4],
+    [5,7],
+    [6,8],
+    [9,10],
+    [10,12]
+]
+n=len(arr)
+arr.sort()
+# print(arr)
+ans=[]
+
+for intervals in arr :
+    if not ans or intervals[0]>ans[-1][1]:
+        ans.append(intervals)
+    else:
+        ans[-1][1]=max(ans[-1][1],intervals[1])
+print(ans)
