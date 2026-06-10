@@ -1602,22 +1602,120 @@
 
 
 
-arr = [
-    [1,3],
-    [2,4],
-    [5,7],
-    [6,8],
-    [9,10],
-    [10,12]
-]
-n=len(arr)
-arr.sort()
-# print(arr)
-ans=[]
+# arr = [
+#     [1,3],
+#     [2,4],
+#     [5,7],
+#     [6,8],
+#     [9,10],
+#     [10,12]
+# ]
+# n=len(arr)
+# arr.sort()
+# # print(arr)
+# ans=[]
 
-for intervals in arr :
-    if not ans or intervals[0]>ans[-1][1]:
-        ans.append(intervals)
-    else:
-        ans[-1][1]=max(ans[-1][1],intervals[1])
-print(ans)
+# for intervals in arr :                                                  # Optimal approch for merge intervals
+#     if not ans or intervals[0]>ans[-1][1]:
+#         ans.append(intervals)
+#     else:
+#         ans[-1][1]=max(ans[-1][1],intervals[1])
+# print(ans)
+
+
+
+# arr1=[1,3,5,7]
+# arr2=[0,2,6,8,9]
+# m=len(arr1)
+# n=len(arr2)
+# arr3=[0]*(n+m)
+# # print(arr3)
+# left=0
+# right=0
+# index=0
+# while left<m and right<n:
+#     if arr1[left]<=arr2[right]:
+#         arr3[index]=arr1[left]
+#         left+=1
+#         index+=1
+#     else:
+#         arr3[index]=arr2[right]
+#         right+=1
+#         index+=1
+# while left<m:
+#     arr3[index]=arr1[left]
+#     left+=1
+#     index+=1
+# while right<n:
+#     arr3[index]=arr2[right]
+#     right+=1
+#     index+=1
+
+
+# for i in range (len(arr3)):
+#     if i<m:
+#         arr1[i]=arr3[i]
+#     else:
+#         arr2[i-m]=arr3[i]
+# print(arr1)
+# print(arr2)
+
+
+
+
+
+
+# arr1=[1,3,5,7]
+# arr2=[0,2,6,8,9]
+# m=len(arr1)
+# n=len(arr2)
+# left=m-1
+# right=0
+# while left>=0 and right<n:
+#     if arr1[left]>arr2[right]:
+#         arr1[left],arr2[right]=arr2[right],arr1[left]
+#         left-=1
+#         right+=1
+#     else:
+#         break
+# arr1.sort()
+# arr2.sort()
+# print(arr1)
+# print(arr2)
+
+
+
+
+
+
+
+def swap(arr1, arr2, ind1, ind2):
+    if arr1[ind1] > arr2[ind2]:
+        arr1[ind1], arr2[ind2] = arr2[ind2], arr1[ind1]
+def merge (arr1,arr2):
+    n=len(arr1)
+    m=len(arr2)
+    length=n+m
+    gap=(length//2)+(length%2)
+    while gap > 0:
+        left=0
+        right=left+gap
+        while right < length:
+            if left<n and right>=n:
+                swap(arr1,arr2,left,right-n)
+            elif left >= n:
+                swap(arr2, arr2, left - n, right - n)
+            else:
+                swap(arr1,arr1,left,right)
+            left+=1
+            right+=1
+        if gap == 1:
+            break
+        gap=(gap//2)+(gap%2)
+arr1 = [1,3,5,7]
+arr2 = [0,2,6,8,9]
+merge(arr1, arr2)
+print(arr1)
+print(arr2)
+
+
