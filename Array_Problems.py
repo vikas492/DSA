@@ -1602,6 +1602,7 @@
 
 
 
+
 # arr = [
 #     [1,3],
 #     [2,4],
@@ -1614,13 +1615,15 @@
 # arr.sort()
 # # print(arr)
 # ans=[]
-
 # for intervals in arr :                                                  # Optimal approch for merge intervals
 #     if not ans or intervals[0]>ans[-1][1]:
 #         ans.append(intervals)
 #     else:
 #         ans[-1][1]=max(ans[-1][1],intervals[1])
 # print(ans)
+
+
+
 
 
 
@@ -1633,7 +1636,7 @@
 # left=0
 # right=0
 # index=0
-# while left<m and right<n:
+# while left<m and right<n:                                                  # merge two sorted arrays Brute force
 #     if arr1[left]<=arr2[right]:
 #         arr3[index]=arr1[left]
 #         left+=1
@@ -1650,8 +1653,6 @@
 #     arr3[index]=arr2[right]
 #     right+=1
 #     index+=1
-
-
 # for i in range (len(arr3)):
 #     if i<m:
 #         arr1[i]=arr3[i]
@@ -1672,8 +1673,8 @@
 # left=m-1
 # right=0
 # while left>=0 and right<n:
-#     if arr1[left]>arr2[right]:
-#         arr1[left],arr2[right]=arr2[right],arr1[left]
+#     if arr1[left]>arr2[right]:                                                  # merge two sorted arrays optimal approch 1
+#         arr1[left],arr2[right]=arr2[right],arr1[left]                           # without extra space
 #         left-=1
 #         right+=1
 #     else:
@@ -1689,33 +1690,175 @@
 
 
 
-def swap(arr1, arr2, ind1, ind2):
-    if arr1[ind1] > arr2[ind2]:
-        arr1[ind1], arr2[ind2] = arr2[ind2], arr1[ind1]
-def merge (arr1,arr2):
-    n=len(arr1)
-    m=len(arr2)
-    length=n+m
-    gap=(length//2)+(length%2)
-    while gap > 0:
-        left=0
-        right=left+gap
-        while right < length:
-            if left<n and right>=n:
-                swap(arr1,arr2,left,right-n)
-            elif left >= n:
-                swap(arr2, arr2, left - n, right - n)
-            else:
-                swap(arr1,arr1,left,right)
-            left+=1
-            right+=1
-        if gap == 1:
-            break
-        gap=(gap//2)+(gap%2)
-arr1 = [1,3,5,7]
-arr2 = [0,2,6,8,9]
-merge(arr1, arr2)
-print(arr1)
-print(arr2)
+# def swap(arr1, arr2, ind1, ind2):
+#     if arr1[ind1] > arr2[ind2]:
+#         arr1[ind1], arr2[ind2] = arr2[ind2], arr1[ind1]
+# def merge (arr1,arr2):
+#     n=len(arr1)
+#     m=len(arr2)
+#     length=n+m
+#     gap=(length//2)+(length%2)
+#     while gap > 0:
+#         left=0
+#         right=left+gap
+#         while right < length:
+#             if left<n and right>=n:                                                  # merge two sorted arrays optimal approch 2
+#                 swap(arr1,arr2,left,right-n)                                         # without using extra space
+#             elif left >= n:
+#                 swap(arr2, arr2, left - n, right - n)
+#             else:
+#                 swap(arr1,arr1,left,right)
+#             left+=1
+#             right+=1
+#         if gap == 1:
+#             break
+#         gap=(gap//2)+(gap%2)
+# arr1 = [1,3,5,7]
+# arr2 = [0,2,6,8,9]
+# merge(arr1, arr2)
+# print(arr1)
+# print(arr2)
 
 
+
+
+# arr=[3,2,1,1,4,6]
+# repeating=-1
+# missing=-1
+# for i in range (1,len(arr)+1):
+#     count=0
+#     for j in range (0,len(arr)):                               # Brute force for missing and repeating
+#         if arr[j]==i:
+#             count+=1
+#     if count==2:
+#         repeating=i
+#     else:
+#         if count==0:
+#             missing=i
+#     if repeating!=-1 and missing!=-1:
+#         break
+# print(repeating)
+# print(missing)
+
+
+
+
+
+
+# arr=[3,2,1,1,4,6]
+# n=len(arr)
+# hash=[0]*(n+1)
+# for i in range (0,n):
+#     hash[arr[i]]+=1
+#     repeating=-1
+#     missing=-1
+# for i in range (1,n+1):                                        # Better approch for missing and repeating
+#     if hash[i]==2:
+#         repeating=i
+#     elif hash[i]==0:
+#         missing=i
+#     if repeating == -1 and missing == -1:
+#         break
+# print(repeating)
+# print(missing)
+
+
+
+
+
+
+# arr=[3,2,1,1,4,6]
+# n=len(arr)
+# sn=(n*(n+1))//2
+# sn2=(n*(n+1)*(2*n+1))//6
+# s=0
+# s2=0
+# for i in range (n):                                              # Optimal approch for missing and repeating
+#     s+=arr[i]
+#     s2+=arr[i]*arr[i]
+# val1=s-sn
+# val2=s2-sn2
+# val2=val2//val1
+# x=(val1+val2)//2
+# y=x-val1
+# print("Repeating",x)
+# print("Missing",y)
+
+
+
+
+
+# arr=[5,3,2,4,1]
+# n=len(arr)
+# count=0
+# for i in range (n):
+#     for j in range (i+1,n):                                    # Brute force for counting inversion
+#         if arr[i]>arr[j]:
+#             count+=1
+        
+# print(count)
+
+
+
+
+
+
+# def merge(arr, low, mid, high):
+
+#     temp = []
+
+#     left = low
+#     right = mid + 1                                             # optimal approch using merge sort
+
+#     count = 0
+
+#     while left <= mid and right <= high:
+
+#         if arr[left] <= arr[right]:
+#             temp.append(arr[left])
+#             left += 1
+
+#         else:
+#             temp.append(arr[right])
+
+#             count += (mid - left + 1)
+
+#             right += 1
+
+#     while left <= mid:
+#         temp.append(arr[left])
+#         left += 1
+
+#     while right <= high:
+#         temp.append(arr[right])
+#         right += 1
+
+#     for i in range(low, high + 1):
+#         arr[i] = temp[i - low]
+
+#     return count
+
+
+# def merge_sort(arr, low, high):
+
+#     count = 0
+
+#     if low >= high:
+#         return count
+
+#     mid = (low + high) // 2
+
+#     count += merge_sort(arr, low, mid)
+
+#     count += merge_sort(arr, mid + 1, high)
+
+#     count += merge(arr, low, mid, high)
+
+#     return count
+
+
+# arr = [5,3,2,4,1]
+
+# ans = merge_sort(arr, 0, len(arr)-1)
+
+# print(ans)
