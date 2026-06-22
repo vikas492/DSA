@@ -95,6 +95,7 @@
 # for i in range (len(arr)):
 #     print(arr[i],end=" ")
 
+
 #                                                                           Array reverse using single pointer
 
 
@@ -325,7 +326,7 @@
 # n=len(a)
 # sorted=True
 # for i in range (1,n):
-#     if a[i]>a[i-1]:                                                                 #look for the sign < and >
+#     if a[i]<a[i-1]:                                                                 #look for the sign < and >  check sorted or not sorted in acending and decending order
 #         sorted=False
 #         break
 # print(sorted)
@@ -351,7 +352,8 @@
 #             arr[i+1]=arr[j]
 #             i+=1
 #     return i+1
-# print(removeDublicate(arr))
+# newArray=removeDublicate(arr)
+# print(arr[:newArray])
 
 
 
@@ -380,13 +382,31 @@
 #     temp.append(arr[i])
 # print(temp)
 # for i in range (d,len(arr)):                                                # the space complexity is o(d) to reduce it will do reverse meathod
-##                                                                              # the reverse method is solved above
+# #                                                                              # the reverse method is solved above
 #     arr[i-d]=arr[i]
 # print(arr)
 # j=0
 # for j in range (len(temp)):
 #     arr[n-d+j]=temp[j]
 # print(arr)
+
+
+
+arr=[1,2,3,4,5,6]
+n=len(arr)
+d=3
+d=d%n
+def reverse(arr,start,end):
+    while start<end:
+        arr[start], arr[end] = arr[end], arr[start]
+        start += 1
+        end -= 1
+
+reverse(arr,0,d-1)
+reverse(arr,d,n-1)
+reverse(arr,0,n-1)
+print(arr)
+
 
 
 
@@ -1862,3 +1882,6 @@
 # ans = merge_sort(arr, 0, len(arr)-1)
 
 # print(ans)
+
+
+
