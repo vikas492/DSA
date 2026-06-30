@@ -122,31 +122,77 @@
 
 
 
-class Solution:
-    def merge(self, nums1: list[int], m: int, nums2: list[int], n: int) -> None:
-        left=m-1
-        right=n-1
-        k=m+n-1
-        while left>=0 and right>=0:
-            if nums2[right]>=nums1[left]:
-                nums1[k]=nums2[right]
-                right-=1
-                k-=1
-            else:
-                nums1[k]=nums1[left]
-                left-=1
-                k-=1
-        while right>=0:
-            nums1[k]=nums2[right]
-            k-=1
-            right-=1
+# class Solution:
+#     def merge(self, nums1: list[int], m: int, nums2: list[int], n: int) -> None:
+#         left=m-1
+#         right=n-1
+#         k=m+n-1
+#         while left>=0 and right>=0:
+#             if nums2[right]>=nums1[left]:
+#                 nums1[k]=nums2[right]
+#                 right-=1
+#                 k-=1
+#             else:
+#                 nums1[k]=nums1[left]
+#                 left-=1
+#                 k-=1
+#         while right>=0:
+#             nums1[k]=nums2[right]
+#             k-=1
+#             right-=1
 
-nums1=[1,2,3,0,0,0]
-nums2=[2,5,6]
-m=len(nums1)
-n=len(nums2)
-m=m-n
+# nums1=[1,2,3,0,0,0]
+# nums2=[2,5,6]
+# m=len(nums1)
+# n=len(nums2)
+# m=m-n
+# obj=Solution()
+# res=obj.merge(nums1,m,nums2,n)
+# print(res)
+# print(nums1)
+
+
+
+
+
+# class Solution:
+#     def searchInsert(self, nums: list[int], target: int) -> int:
+#         for i in range (len(nums)):
+#             if nums[i]>=target:
+#                 return i
+#         return len(nums)
+            
+# nums=[1,3,5,6]
+# target=5
+# obj=Solution()
+# res=obj.searchInsert(nums,target)
+# print(res)
+
+
+
+
+class Solution:
+    def searchInsert(self, nums: list[int], target: int) -> int:
+        n=len(nums)
+        i=0
+        j=n-1
+        
+        while i<=j:
+            mid=(i+j)//2
+            if nums[mid]==target:
+                return mid
+            elif target<nums[mid]:
+                j=mid-1
+            else:
+                i=mid+1
+        return i
+
+
+            
+
+
+nums=[1,3,5,6]
+target=0
 obj=Solution()
-res=obj.merge(nums1,m,nums2,n)
+res=obj.searchInsert(nums,target)
 print(res)
-print(nums1)
