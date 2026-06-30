@@ -392,20 +392,20 @@
 
 
 
-arr=[1,2,3,4,5,6]
-n=len(arr)
-d=3
-d=d%n
-def reverse(arr,start,end):
-    while start<end:
-        arr[start], arr[end] = arr[end], arr[start]
-        start += 1
-        end -= 1
+# arr=[1,2,3,4,5,6]
+# n=len(arr)
+# d=3
+# d=d%n
+# def reverse(arr,start,end):                                                 # optimal reverse approch
+#     while start<end:
+#         arr[start], arr[end] = arr[end], arr[start]
+#         start += 1
+#         end -= 1
 
-reverse(arr,0,d-1)
-reverse(arr,d,n-1)
-reverse(arr,0,n-1)
-print(arr)
+# reverse(arr,0,d-1)
+# reverse(arr,d,n-1)
+# reverse(arr,0,n-1)
+# print(arr)
 
 
 
@@ -462,7 +462,7 @@ print(arr)
 # j=0
 # while i<len(a1) and j<len(a2):
 #     if a1[i]<a2[j]:
-#         i+=1                                                                       # Optimized insertion
+#         i+=1                                                                       # Optimized intersertion
 #     elif a2[j]<a1[i]:
 #             j+=1
 #     else:
@@ -490,11 +490,15 @@ print(arr)
 
 
 
+
 # arr=[1,2,3,4,6]
 # n=len(arr)+1
+# print(n)
 # hashArr = [0]*(n+1)
+# print(hashArr)
 # for i in range (len(arr)):                                                   # Better approch using hashing
 #     hashArr[arr[i]] = 1
+# print(hashArr)
 # for i in range (1,n+1):
 #     if hashArr[i]==0:
 #         print(i)
@@ -579,10 +583,10 @@ print(arr)
 # for i in range (len(arr)):                                                       # better approch but the not suitable for the 10^12 or 10^9 these are very large numbers
 #     hash[arr[i]]+=1
 # print(hash)
-# for i  in range (1,len(hash)):
-#     if hash[arr[i]] == 1:
-#         num=arr[i]
-# print(num)
+# for num in arr:
+#     if hash[num] == 1:
+#        print(num)
+#        break
 
 
 
@@ -594,9 +598,9 @@ print(arr)
 # freq={}
 # for num in arr:                                                                       # optimal approch
 #     if num in freq:
-#         freq[arr[num]]+=1
+#         freq[num]+=1
 #     else:
-#         freq[arr[num]]=1
+#         freq[num]=1
 # print(freq)
 # for key in freq:
 #     if freq[key]==1:
@@ -634,7 +638,7 @@ print(arr)
 # d=3
 # length=0
 # for i in range (0,len(arr)): 
-#     sum=0                                                                        # Sum of subarray brutte force O(n^2)
+#     sum=0                                                                        # Sum of subarray better O(n^2)
 #     for j in range (i,len(arr)):
 #         sum+=arr[j]
 #         if sum == d:
@@ -704,7 +708,7 @@ print(arr)
 # Target=14
 # left=0
 # right=len(arr)-1
-# arr.sort()
+# # arr.sort()
 # while left < right:
 #     s=arr[left]+arr[right]                                               # Two pointer approch of 2 SUM but it needs the array to be sorted
 #     if s == Target:
@@ -763,7 +767,8 @@ print(arr)
 
 
 
-# arr=[2,2,3,3,1,2,2]
+
+# arr=[2,2,3,3,3,3,3,3,2,2,22]
 # for i in range (len(arr)):
 #     count=0
 #     for j in range (i,len(arr)):                                                  # Find Majority element greater then n/2
@@ -1094,7 +1099,7 @@ print(arr)
 #     for j in range (cols):
 #         if matrix[i][j]==0:
 #             row[i]=1
-#             col[i]=1
+#             col[j]=1
 # for i in range (rows):
 #     for j in range (cols):
 #         if row[i] == 1 or col[j] == 1:
@@ -1160,7 +1165,9 @@ print(arr)
 #     [8,9,3]
 # ]
 # n=len(matrix)
-# ans = [[0] * n for _ in range(n)]                                            # Brute force for rotating the matrix by 90 degree
+# print(n)
+# ans = [[0] * n for _ in range(n)]  
+# print(ans)                                          # Brute force for rotating the matrix by 90 degree
 # rows=len(matrix)
 # cols=len(matrix[0])
 # for i in range (rows):
@@ -1433,7 +1440,7 @@ print(arr)
 #                 temp=[arr[i],arr[j],arr[k]]
 #                 temp.sort()
 #                 map.add(tuple(temp))
-            
+#   
 # print(map)
 
 
@@ -1523,7 +1530,7 @@ print(arr)
 #             fourth=Target-sum
 #             if fourth in seen :
 #                 temp = [arr[i], arr[j], arr[k], fourth]
-#                 temp.sort()
+#                 temp.sort()       
 #                 ans.add(tuple(temp))
 #             seen.add(arr[k])
 # print(ans)
@@ -1633,7 +1640,7 @@ print(arr)
 # ]
 # n=len(arr)
 # arr.sort()
-# # print(arr)
+# print(arr)
 # ans=[]
 # for intervals in arr :                                                  # Optimal approch for merge intervals
 #     if not ans or intervals[0]>ans[-1][1]:
@@ -1686,23 +1693,23 @@ print(arr)
 
 
 
-# arr1=[1,3,5,7]
-# arr2=[0,2,6,8,9]
-# m=len(arr1)
-# n=len(arr2)
-# left=m-1
-# right=0
-# while left>=0 and right<n:
-#     if arr1[left]>arr2[right]:                                                  # merge two sorted arrays optimal approch 1
-#         arr1[left],arr2[right]=arr2[right],arr1[left]                           # without extra space
-#         left-=1
-#         right+=1
-#     else:
-#         break
-# arr1.sort()
-# arr2.sort()
-# print(arr1)
-# print(arr2)
+arr1=[1,3,5,7]
+arr2=[0,2,6,8,9]
+m=len(arr1)
+n=len(arr2)
+left=m-1
+right=0
+while left>=0 and right<n:
+    if arr1[left]>arr2[right]:                                                  # merge two sorted arrays optimal approch 1
+        arr1[left],arr2[right]=arr2[right],arr1[left]                           # without extra space
+        left-=1
+        right+=1
+    else:
+        break
+arr1.sort()
+arr2.sort()
+print(arr1)
+print(arr2)
 
 
 
@@ -1885,3 +1892,4 @@ print(arr)
 
 
 
+################################## Solving Leetcode Now for Practice ##########################################3
