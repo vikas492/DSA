@@ -171,28 +171,110 @@
 
 
 
-class Solution:
-    def searchInsert(self, nums: list[int], target: int) -> int:
-        n=len(nums)
-        i=0
-        j=n-1
+
+
+# class Solution:
+#     def searchInsert(self, nums: list[int], target: int) -> int:
+#         n=len(nums)
+#         i=0
+#         j=n-1        
+#         while i<=j:
+#             mid=(i+j)//2
+#             if nums[mid]==target:
+#                 return mid
+#             elif target<nums[mid]:
+#                 j=mid-1
+#             else:
+#                 i=mid+1
+#         return i
+# nums=[1,3,5,6]
+# target=0
+# obj=Solution()
+# res=obj.searchInsert(nums,target)
+# print(res)
+
+
+
+
+
+
+# class Solution:
+#     def containsDuplicate(self, nums: list[int]) -> bool:
+#         freq={}
+#         for num in nums:
+#             if num not in freq:
+#                 freq[num]=1
+#             else:
+#                 freq[num]+=1
+#             if freq[num]==2:
+#                 return True
+#         return False
         
-        while i<=j:
-            mid=(i+j)//2
-            if nums[mid]==target:
-                return mid
-            elif target<nums[mid]:
-                j=mid-1
-            else:
-                i=mid+1
-        return i
+# nums=[1,2,3,4]
+# obj=Solution()
+# res=obj.containsDuplicate(nums)
+# print(res)
 
 
-            
 
 
-nums=[1,3,5,6]
-target=0
+
+# class Solution:
+#     def containsDuplicate(self, nums: list[int]) -> bool:
+#         seen = set()
+#         for num in nums:
+#             if num in seen:
+#                 return True
+#             seen.add(num)
+#         return False
+        
+# nums=[1,2,3,1]
+# obj=Solution()
+# res=obj.containsDuplicate(nums)
+# print(res)
+
+
+
+
+# class Solution:
+#     def findMissingElements(self, nums: list[int]) -> list[int]:
+#         n=len(nums)
+#         total=0
+#         sum=0
+#         maxi=max(nums)
+#         mini=min(nums)
+#         for i in range (mini,maxi+1):
+#             total+=i
+#         for i in range (n):
+#             sum+=nums[i]
+#         if total==sum:
+#             return []
+#         return total-sum
+        
+# nums=[6,7,8,9]
+# obj=Solution()
+# res=obj.findMissingElements(nums)
+# print(res)   
+
+
+
+
+
+
+class Solution:
+    def findMissingElements(self, nums: list[int]) -> list[int]:
+       res=set(nums)
+       ans=[]
+       
+       for num in range (min(nums),max(nums)+1):
+            if num not in res:
+               ans.append(num)
+       return ans
+           
+        
+nums=[1,2,3,5]
 obj=Solution()
-res=obj.searchInsert(nums,target)
-print(res)
+res=obj.findMissingElements(nums)
+print(res) 
+
+        
