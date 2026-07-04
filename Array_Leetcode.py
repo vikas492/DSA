@@ -103,6 +103,7 @@
 
 
 
+
 # class Solution:
 #     def plusOne(self, digits: list[int]) -> list[int]:
 #         n=len(digits)
@@ -117,6 +118,7 @@
 # obj=Solution()
 # res=obj.plusOne(digits)
 # print(res)
+
 
 
 
@@ -150,6 +152,7 @@
 # res=obj.merge(nums1,m,nums2,n)
 # print(res)
 # print(nums1)
+
 
 
 
@@ -219,6 +222,7 @@
 
 
 
+
 # class Solution:
 #     def containsDuplicate(self, nums: list[int]) -> bool:
 #         seen = set()
@@ -232,6 +236,8 @@
 # obj=Solution()
 # res=obj.containsDuplicate(nums)
 # print(res)
+
+
 
 
 
@@ -261,20 +267,60 @@
 
 
 
-class Solution:
-    def findMissingElements(self, nums: list[int]) -> list[int]:
-       res=set(nums)
-       ans=[]
+# class Solution:
+#     def findMissingElements(self, nums: list[int]) -> list[int]:
+#        res=set(nums)
+#        ans=[]
        
-       for num in range (min(nums),max(nums)+1):
-            if num not in res:
-               ans.append(num)
-       return ans
+#        for num in range (min(nums),max(nums)+1):
+#             if num not in res:
+#                ans.append(num)
+#        return ans
            
         
-nums=[1,2,3,5]
-obj=Solution()
-res=obj.findMissingElements(nums)
-print(res) 
+# nums=[1,2,3,5]
+# obj=Solution()
+# res=obj.findMissingElements(nums)
+# print(res) 
 
+
+
+
+
+
+
+# class Solution:
+#     def containsNearbyDuplicate(self, nums: list[int], k: int) -> bool:
+#         freq={}
+#         for i in range (len(nums)):
+#             if nums[i] in freq:
+#                if abs(i-freq[nums[i]])<=k:
+#                    return True
+#             freq[nums[i]]=i
+#         return False
         
+        
+# nums=[1,2,3,1]
+# k=3
+# obj=Solution()
+# res=obj.containsNearbyDuplicate(nums,k)
+# print(res) 
+
+
+
+
+
+class Solution:
+    def containsNearbyDuplicate(self, nums: list[int], k: int) -> bool:
+        for i in range (len(nums)):
+            for j in range(i+1,len(nums)):
+                if nums[i]==nums[j] and abs(i-j)<=k:
+                    return True
+        return False
+        
+        
+nums=[1,2,3,1]
+k=3
+obj=Solution()
+res=obj.containsNearbyDuplicate(nums,k)
+print(res) 
