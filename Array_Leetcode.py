@@ -310,17 +310,114 @@
 
 
 
+# class Solution:
+#     def containsNearbyDuplicate(self, nums: list[int], k: int) -> bool:
+#         for i in range (len(nums)):
+#             for j in range(i+1,len(nums)):
+#                 if nums[i]==nums[j] and abs(i-j)<=k:
+#                     return True
+#         return False
+        
+        
+# nums=[1,2,3,1]
+# k=3
+# obj=Solution()
+# res=obj.containsNearbyDuplicate(nums,k)
+# print(res) 
+
+
+
+
+# class Solution:
+#     def moveZeroes(self, nums: list[int]) -> None:
+#         i=0
+#         j=0
+#         while j<len(nums):
+#             if nums[j]!=0:
+#                 nums[i],nums[j]=nums[j],nums[i]
+#                 j+=1
+#                 i+=1
+#             else:
+#                 j+=1
+#         return nums
+            
+
+# nums=[0,1,0,3,12]
+# obj=Solution()
+# res=obj.moveZeroes(nums)
+# print(res)
+ 
+
+
+
+# class Solution:
+#     def majorityElement(self, nums: list[int]) -> int:
+#         freq={}
+#         m=len(nums)//2
+#         for i in range (len(nums)):
+#            if nums[i] not in freq:
+#                freq[nums[i]]=1
+#            else:
+#                freq[nums[i]]+=1
+#         for key,value in freq.items():
+#             if value>m:
+#                 return key
+          
+# nums=[1,1,2,2,3,3,3,3,3,3,3,3]
+# obj=Solution()
+# res=obj.majorityElement(nums)
+# print(res)
+
+        
+
+
+# print(res)
+ 
+
+
+
+# class Solution:
+#     def majorityElement(self, nums: list[int]) -> int:
+#         ele=None
+#         count=0
+#         for i in range (len(nums)):
+#             if count==0:
+#                 ele=nums[i]
+#                 count=1
+#             elif nums[i]==ele:
+#                 count+=1
+#             else:
+#                 count-=1
+#         count1=0
+#         n=len(nums)//2
+#         for i in range (len(nums)):
+#             if nums[i]==ele:
+#                 count1+=1
+#         if count1>n:
+#             return ele
+#         return -1
+
+          
+# nums=[1,1,2,2,3,3,3,3,3,3,3,3]
+# obj=Solution()
+# res=obj.majorityElement(nums)
+# print(res)
+
+
+
 class Solution:
-    def containsNearbyDuplicate(self, nums: list[int], k: int) -> bool:
+    def singleNumber(self, nums: list[int]) -> int:
+        freq={}
         for i in range (len(nums)):
-            for j in range(i+1,len(nums)):
-                if nums[i]==nums[j] and abs(i-j)<=k:
-                    return True
-        return False
-        
-        
-nums=[1,2,3,1]
-k=3
+            if nums[i] not in freq:
+                freq[nums[i]]=1
+            else:
+                freq[nums[i]]+=1
+        for key,value in freq.items():
+            if value==1:
+                return key
+
+nums=[2,2,4,4,6]
 obj=Solution()
-res=obj.containsNearbyDuplicate(nums,k)
-print(res) 
+res=obj.singleNumber(nums)
+print(res)   
