@@ -405,19 +405,60 @@
 
 
 
-class Solution:
-    def singleNumber(self, nums: list[int]) -> int:
-        freq={}
-        for i in range (len(nums)):
-            if nums[i] not in freq:
-                freq[nums[i]]=1
-            else:
-                freq[nums[i]]+=1
-        for key,value in freq.items():
-            if value==1:
-                return key
+# class Solution:
+#     def singleNumber(self, nums: list[int]) -> int:
+#         freq={}
+#         for i in range (len(nums)):
+#             if nums[i] not in freq:
+#                 freq[nums[i]]=1
+#             else:
+#                 freq[nums[i]]+=1
+#         for key,value in freq.items():
+#             if value==1:
+#                 return key
 
-nums=[2,2,4,4,6]
+# nums=[2,2,4,4,6]
+# obj=Solution()
+# res=obj.singleNumber(nums)
+# print(res)   
+
+
+
+# class Solution:
+#     def singleNumber(self, nums: list[int]) -> int:
+#         ans=0
+#         for num in nums:
+#             ans^=num
+#         return ans
+# nums=[2,2,4,4,6]
+# obj=Solution()
+# res=obj.singleNumber(nums)
+# print(res)   
+
+
+
+class Solution:
+
+    def NcR(self,n,r):
+        res=1
+        for i in range (r):
+            res=res*(n-i)
+            res=res//(i+1)
+        return res
+
+    def generate(self, numRows: int) -> list[list[int]]:
+        
+        total=[]
+        for row in range (numRows):
+            res=[]
+            for col in range (row+1):
+                res.append(self.NcR(row,col))
+            total.append(res)
+        return total
+
+numRows=6       
 obj=Solution()
-res=obj.singleNumber(nums)
+res=obj.generate(numRows)
 print(res)   
+
+
