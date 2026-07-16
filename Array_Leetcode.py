@@ -437,28 +437,171 @@
 
 
 
-class Solution:
+# class Solution:
 
-    def NcR(self,n,r):
-        res=1
-        for i in range (r):
-            res=res*(n-i)
-            res=res//(i+1)
-        return res
+#     def NcR(self,n,r):
+#         res=1
+#         for i in range (r):
+#             res=res*(n-i)
+#             res=res//(i+1)
+#         return res
 
-    def generate(self, numRows: int) -> list[list[int]]:
+#     def generate(self, numRows: int) -> list[list[int]]:
         
-        total=[]
-        for row in range (numRows):
-            res=[]
-            for col in range (row+1):
-                res.append(self.NcR(row,col))
-            total.append(res)
-        return total
+#         total=[]
+#         for row in range (numRows):
+#             res=[]
+#             for col in range (row+1):
+#                 res.append(self.NcR(row,col))
+#             total.append(res)
+#         return total
 
-numRows=6       
-obj=Solution()
-res=obj.generate(numRows)
-print(res)   
+# numRows=6       
+# obj=Solution()
+# res=obj.generate(numRows)
+# print(res)   
 
 
+
+
+
+
+# class Solution:
+#     def getRow(self, rowIndex: int) -> List[int]:
+#         ans=1
+#         li=[1]
+#         for i in range (1,rowIndex+1):
+#             ans=ans*(rowIndex-i+1)
+#             ans=ans//i
+#             li.append(ans)
+#         return li
+
+# numRows=6       
+# obj=Solution()
+# res=obj.getRow(numRows)
+# print(res)
+
+
+
+
+
+
+# class Solution:
+#     def maxProfit(self, prices: List[int]) -> int:
+#         l,r=0,1
+#         maxp=0
+#         while l<(len(prices)-1):
+#             if prices[l]>prices[r]:
+#                 profit=prices[r]-prices[l]
+#                 maxp=max(maxp,profit)
+#             else:
+#                 l+=1
+#             r+=1
+#         return maxp
+# prices=[7,1,5,3,6,4]
+# obj=Solution()
+# res=obj.maxProfit(prices)
+# print(res)
+
+
+
+
+
+# class Solution:
+#     def summaryRanges(self, nums: list[int]) -> list[str]:
+#         ans=[]
+#         i=0
+#         while i<len(nums):
+#             start=nums[i]
+#             while i + 1 < len(nums) and nums[i+1]==nums[i]+1:
+#                 i+=1
+#             end=nums[i]
+#             if start==end:
+#                 ans.append(str(start))
+#             else:
+#                 ans.append(f"{start}->{end}")
+#             i+=1
+#         return ans
+    
+# nums=[0,1,2,4,5,7]
+# obj=Solution()
+# res=obj.summaryRanges(nums)
+# print(res)
+
+
+
+
+# class Solution:
+#     def missingNumber(self, nums: list[int]) -> int:
+#         n=len(nums)
+#         total=0
+#         sum=0
+#         for i in range (len(nums)):
+#             total+=nums[i]
+#         for i in range (n+1):
+#             sum+=i
+#         res=sum-total
+#         return res
+
+# nums=[9,6,4,2,3,5,7,0,1]
+# obj=Solution()
+# res=obj.missingNumber(nums)
+# print(res)
+
+
+
+
+# class Solution:
+
+#     def missingNumber(self, nums: list[int]) -> int:
+#         n = len(nums)
+#         expected = n * (n + 1) // 2
+#         actual = sum(nums)
+#         return expected - actual
+# nums=[9,6,4,2,3,5,7,0,1]
+# obj=Solution()
+# res=obj.missingNumber(nums)
+# print(res)
+### (Their are 2 more meathods for this one is the XOR and other is by sorting.)
+
+
+
+
+# class Solution:
+#     def longestCommonPrefix(self, strs: list[str]) -> str:
+#         first = strs[0]
+
+#         for i in range(len(first)):
+#             for j in range(1, len(strs)):
+#                 if i >= len(strs[j]):
+#                     return first[:i]
+#                 if first[i] != strs[j][i]:
+#                     return first[:i]
+#         return first
+
+
+# strs = ["flower", "flow", "flight"]
+# obj = Solution()
+# res = obj.longestCommonPrefix(strs)
+# print(res)
+
+
+
+
+class Solution:
+    def longestCommonPrefix(self, strs: list[str]) -> str:
+        first = strs[0]
+
+        for i in range (len(first)):
+            for j in range (len(strs)):
+                if i>=len(strs[j]):
+                    return first[:i]
+                if first[i]!=strs[j][i]:
+                    return first[:i]
+        return first
+
+
+strs = ["flower", "flow", "flight"]
+obj = Solution()
+res = obj.longestCommonPrefix(strs)
+print(res)
