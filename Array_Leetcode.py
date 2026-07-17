@@ -588,20 +588,150 @@
 
 
 
+
+# class Solution:
+#     def threeSum(self, nums: list[int]) -> list[list[int]]:
+#         ans=set()
+#         for i in range(0,len(nums)):
+#             for j in range (i+1,len(nums)):
+#                 for k in range (j+1,len(nums)):
+#                     sum=nums[i]+nums[j]+nums[k]
+#                     if sum==0:
+#                         temp=[nums[i],nums[j],nums[k]]
+#                         temp.sort()
+#                         ans.add(tuple(temp))
+#         return [list(x) for x in ans]
+# nums = [-1,0,1,2,-1,-4]
+# obj = Solution()
+# res = obj.threeSum(nums)
+# print(res)
+
+
+
+
+
+# class Solution:
+#     def threeSum(self, nums: list[int]) -> list[list[int]]:
+#         ans=set()
+#         for i in range(0,len(nums)):
+#             seen=set()
+#             for j in range (i+1,len(nums)):
+#                 third=-(nums[i]+nums[j])
+#                 if third in seen:
+#                     temp=[nums[i],nums[j],third]
+#                     temp.sort()
+#                     ans.add(tuple(temp))
+#                 else:
+#                     seen.add(nums[j])
+#         return [list(x) for x in ans]
+# nums = [-1,0,1,2,-1,-4]
+# obj = Solution()
+# res = obj.threeSum(nums)
+# print(res)
+
+
+
+
+# class Solution:
+#     def threeSum(self, nums: list[int]) -> list[list[int]]:
+#         n=len(nums)
+#         ans=set()
+#         for i in range (n):
+#             if i>0 and nums[i]==nums[i-1]: continue
+#             j=i+1
+#             k=n-1
+#             while j<k:
+#                 sum=nums[i]+nums[j]+nums[k]
+#                 if sum == 0:
+#                     temp=[nums[i],nums[j],nums[k]]
+#                     ans.add(tuple(temp))
+#                     j+=1
+#                     k-=1
+#                     while j<k and nums[j]==nums[j-1]:j+=1
+#                     while j<k and nums[k]==nums[k+1]:k-=1
+#                 elif sum<0:
+#                     j+=1
+#                 else:
+#                     k-=1
+#         return [list(x) for x in ans]
+# nums = [-1,0,1,2,-1,-4]
+# nums.sort()
+# obj = Solution()
+# res = obj.threeSum(nums)
+# print(res)
+
+
+
+
+# class Solution:
+#     def threeSumClosest(self, nums: list[int], target: int) -> int:
+#         nums.sort()
+#         n=len(nums)
+#         closetSum=nums[0]+nums[1]+nums[2]
+#         for i in range (n):
+#             if i>0 and nums[i]==nums[i-1]: continue
+#             j=i+1
+#             k=n-1
+#             while j<k:
+#                 currentSum=nums[i]+nums[j]+nums[k]
+#                 current=abs(currentSum-target)
+#                 close=abs(closetSum-target)
+#                 if current<close:
+#                     closetSum=currentSum
+                  
+#                 if currentSum<target:
+#                     j+=1
+#                 elif currentSum>target:
+#                     k-=1
+#                 else:
+#                     return currentSum
+#         return closetSum
+# nums = [-1,2,1,-4]
+# target=1
+# obj = Solution()
+# res = obj.threeSumClosest(nums,target)
+# print(res)
+
+
+
+
+
+# class Solution:
+#     def intersection(self, nums1: list[int], nums2: list[int]) -> list[int]:
+#         set_nums2=set(nums2)
+#         res=set()
+#         for num in nums1:
+#             if num in set_nums2:
+#                 res.add(num)
+#         return list(res)
+# nums1 = [4,9,5]
+# nums2 = [9,4,9,8,4]
+# obj = Solution()
+# res = obj.intersection(nums1,nums2)
+# print(res)
+
+
+
+
+
 class Solution:
-    def longestCommonPrefix(self, strs: list[str]) -> str:
-        first = strs[0]
+    def intersection(self, nums1: list[int], nums2: list[int]) -> list[int]:
+        freq={}
+        ans=[]
+        for num in nums2:
+            if num not in freq:
+                freq[num]=1
+            else:
+                freq[num]+=1
+        for num in nums1:
+            if num in freq:
+                ans.append(num)
+                freq[num]-=1
+        return ans
 
-        for i in range (len(first)):
-            for j in range (len(strs)):
-                if i>=len(strs[j]):
-                    return first[:i]
-                if first[i]!=strs[j][i]:
-                    return first[:i]
-        return first
 
-
-strs = ["flower", "flow", "flight"]
+nums1 = [1,2,2,1]
+nums2 = [2,2]
 obj = Solution()
-res = obj.longestCommonPrefix(strs)
+res = obj.intersection(nums1,nums2)
 print(res)
